@@ -1,0 +1,36 @@
+<h1>Vacas</h1>
+
+<div>
+    <button class="button" (click)="botaoVaca(1)">Listar</button>
+    <button class="button" (click)="botaoVaca(2)">Cadastrar</button>
+</div>
+
+<br/>
+
+<div *ngIf="botao==1">
+    <ul>
+        <li *ngFor="let cows of cow">
+          <p>{{ cows.nomeCow }}</p>
+        </li>
+      </ul>
+</div>
+
+<div *ngIf="botao==2">
+    <form [formGroup]="form">
+      <input 
+          type="text" 
+          placeholder="Nome da Vaca" 
+          maxlength="60" 
+          formControlName="nomeCow">
+          <br>
+          <br>
+        <select formControlName="selectFilial">
+            <option *ngFor="let filiais of filial" [value]="filiais._id">{{ filiais.nomeFazenda }}</option> 
+        </select>
+        <p>{{ _idFilial }}</p>
+      <p> 
+        <button [disabled]="form.invalid" (click)="setter()">Salvar</button><br/>
+      </p>
+    </form>
+  </div> 
+

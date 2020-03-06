@@ -1,0 +1,29 @@
+<h1 >Filiais</h1>
+
+<div>
+    <button class="button" (click)="botaoFilial(1)">Listar</button>
+    <button class="button" (click)="botaoFilial(2)">Cadastrar</button>
+</div>
+
+<br/>
+
+<div *ngIf="botao==1">
+  <ul>
+    <li *ngFor="let filiais of filial">
+      <p>{{ filiais.nomeFazenda }}</p>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="botao==2">
+    <form [formGroup]="form">
+      <input 
+          type="text" 
+          placeholder="Nome da fazenda" 
+          maxlength="60" 
+          formControlName="nomeFazenda">
+      <p> 
+        <button [disabled]="form.invalid" (click)="setter()">Salvar</button><br/>
+      </p>
+    </form>
+  </div> 
